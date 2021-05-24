@@ -1,0 +1,34 @@
+
+application {
+  config {
+    baseName boostclient,
+    applicationType monolith,
+    packageName com.boostclient,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular
+  }
+  entities *
+}
+
+
+entity Employer {
+  name String required
+}
+
+entity Employee {
+  name String required
+  dateOfBirth LocalDate required
+}
+
+entity Quote {
+  name String required
+  quoteDate LocalDate required
+}
+
+relationship ManyToOne {
+	Employee{employer(name) required} to Employer
+}
+relationship ManyToOne {
+	Quote{employer(name) required} to Employer
+}   

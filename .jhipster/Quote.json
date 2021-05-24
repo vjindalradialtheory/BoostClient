@@ -1,0 +1,35 @@
+{
+  "name": "Quote",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "quoteDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employer",
+      "otherEntityRelationshipName": "quote",
+      "relationshipValidateRules": "required",
+      "relationshipName": "employer",
+      "otherEntityField": "name"
+    }
+  ],
+  "entityTableName": "quote",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["boostclient"],
+  "changelogDate": "20210524080311"
+}
