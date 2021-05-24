@@ -48,7 +48,7 @@
           <td>{{ employee.dateOfBirth | formatMediumDate }}</td>
           <td>
             <div *ngIf="employee.employer">
-              <a [routerLink]="['/employer', employee.employer?.id, 'view']">{{ employee.employer?.name }}</a>
+              <a [routerLink]="['/employer', employee.employer?.id, 'view']">{{ employee.employer?.id }}</a>
             </div>
           </td>
           <td class="text-right">

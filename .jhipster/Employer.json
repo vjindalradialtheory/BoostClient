@@ -7,7 +7,14 @@
       "fieldValidateRules": ["required"]
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "employer",
+      "relationshipName": "employee"
+    }
+  ],
   "entityTableName": "employer",
   "dto": "no",
   "pagination": "no",

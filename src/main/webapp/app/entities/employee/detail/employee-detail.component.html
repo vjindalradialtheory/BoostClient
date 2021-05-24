@@ -25,7 +25,7 @@
         <dt><span jhiTranslate="boostclientApp.employee.employer">Employer</span></dt>
         <dd>
           <div *ngIf="employee.employer">
-            <a [routerLink]="['/employer', employee.employer?.id, 'view']">{{ employee.employer?.name }}</a>
+            <a [routerLink]="['/employer', employee.employer?.id, 'view']">{{ employee.employer?.id }}</a>
           </div>
         </dd>
       </dl>

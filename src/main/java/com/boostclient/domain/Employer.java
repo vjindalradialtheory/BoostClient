@@ -1,6 +1,9 @@
 package com.boostclient.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
@@ -23,6 +26,11 @@ public class Employer implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "employer")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "employer" }, allowSetters = true)
+    private Set<Employee> employees = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -49,6 +57,37 @@ public class Employer implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Employee> getEmployees() {
+        return this.employees;
+    }
+
+    public Employer employees(Set<Employee> employees) {
+        this.setEmployees(employees);
+        return this;
+    }
+
+    public Employer addEmployee(Employee employee) {
+        this.employees.add(employee);
+        employee.setEmployer(this);
+        return this;
+    }
+
+    public Employer removeEmployee(Employee employee) {
+        this.employees.remove(employee);
+        employee.setEmployer(null);
+        return this;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        if (this.employees != null) {
+            this.employees.forEach(i -> i.setEmployer(null));
+        }
+        if (employees != null) {
+            employees.forEach(i -> i.setEmployer(this));
+        }
+        this.employees = employees;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

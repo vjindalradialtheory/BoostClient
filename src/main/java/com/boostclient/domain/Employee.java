@@ -1,5 +1,6 @@
 package com.boostclient.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.*;
@@ -29,8 +30,8 @@ public class Employee implements Serializable {
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
 
-    @ManyToOne(optional = false)
-    @NotNull
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "employees" }, allowSetters = true)
     private Employer employer;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

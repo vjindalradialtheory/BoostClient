@@ -17,9 +17,7 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "employer",
       "otherEntityRelationshipName": "employee",
-      "relationshipValidateRules": "required",
-      "relationshipName": "employer",
-      "otherEntityField": "name"
+      "relationshipName": "employer"
     }
   ],
   "entityTableName": "employee",

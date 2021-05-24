@@ -18,7 +18,8 @@
         "title": "Employer"
       },
       "id": "ID",
-      "name": "Name"
+      "name": "Name",
+      "employee": "Employee"
     }
   }
 }
