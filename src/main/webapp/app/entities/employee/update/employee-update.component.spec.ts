@@ -44,12 +44,10 @@ describe('Component Tests', () => {
         const employee: IEmployee = { id: 456 };
         const employer: IEmployer = { id: 9799 };
         employee.employer = employer;
-        const employer: IEmployer = { id: 89821 };
-        employee.employer = employer;
 
-        const employerCollection: IEmployer[] = [{ id: 75315 }];
+        const employerCollection: IEmployer[] = [{ id: 89821 }];
         spyOn(employerService, 'query').and.returnValue(of(new HttpResponse({ body: employerCollection })));
-        const additionalEmployers = [employer, employer];
+        const additionalEmployers = [employer];
         const expectedCollection: IEmployer[] = [...additionalEmployers, ...employerCollection];
         spyOn(employerService, 'addEmployerToCollectionIfMissing').and.returnValue(expectedCollection);
 
@@ -63,16 +61,13 @@ describe('Component Tests', () => {
 
       it('Should update editForm', () => {
         const employee: IEmployee = { id: 456 };
-        const employer: IEmployer = { id: 75293 };
-        employee.employer = employer;
-        const employer: IEmployer = { id: 81562 };
+        const employer: IEmployer = { id: 75315 };
         employee.employer = employer;
 
         activatedRoute.data = of({ employee });
         comp.ngOnInit();
 
         expect(comp.editForm.value).toEqual(expect.objectContaining(employee));
-        expect(comp.employersSharedCollection).toContain(employer);
         expect(comp.employersSharedCollection).toContain(employer);
       });
     });

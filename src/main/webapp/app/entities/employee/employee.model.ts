@@ -6,17 +6,10 @@ export interface IEmployee {
   name?: string;
   dateOfBirth?: dayjs.Dayjs;
   employer?: IEmployer;
-  employer?: IEmployer;
 }
 
 export class Employee implements IEmployee {
-  constructor(
-    public id?: number,
-    public name?: string,
-    public dateOfBirth?: dayjs.Dayjs,
-    public employer?: IEmployer,
-    public employer?: IEmployer
-  ) {}
+  constructor(public id?: number, public name?: string, public dateOfBirth?: dayjs.Dayjs, public employer?: IEmployer) {}
 }
 
 export function getEmployeeIdentifier(employee: IEmployee): number | undefined {

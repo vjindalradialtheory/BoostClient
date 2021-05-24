@@ -42,10 +42,10 @@ describe('Component Tests', () => {
     describe('ngOnInit', () => {
       it('Should call Employer query and add missing value', () => {
         const quote: IQuote = { id: 456 };
-        const employer: IEmployer = { id: 73128 };
+        const employer: IEmployer = { id: 75293 };
         quote.employer = employer;
 
-        const employerCollection: IEmployer[] = [{ id: 10431 }];
+        const employerCollection: IEmployer[] = [{ id: 81562 }];
         spyOn(employerService, 'query').and.returnValue(of(new HttpResponse({ body: employerCollection })));
         const additionalEmployers = [employer];
         const expectedCollection: IEmployer[] = [...additionalEmployers, ...employerCollection];
@@ -61,7 +61,7 @@ describe('Component Tests', () => {
 
       it('Should update editForm', () => {
         const quote: IQuote = { id: 456 };
-        const employer: IEmployer = { id: 95380 };
+        const employer: IEmployer = { id: 73128 };
         quote.employer = employer;
 
         activatedRoute.data = of({ quote });

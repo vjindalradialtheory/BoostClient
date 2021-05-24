@@ -20,14 +20,6 @@
       "relationshipValidateRules": "required",
       "relationshipName": "employer",
       "otherEntityField": "name"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "employer",
-      "otherEntityRelationshipName": "employee",
-      "relationshipValidateRules": "required",
-      "relationshipName": "employer",
-      "otherEntityField": "name"
     }
   ],
   "entityTableName": "employee",

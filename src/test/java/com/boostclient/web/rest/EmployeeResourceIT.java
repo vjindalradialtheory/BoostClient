@@ -73,8 +73,6 @@ class EmployeeResourceIT {
             employer = TestUtil.findAll(em, Employer.class).get(0);
         }
         employee.setEmployer(employer);
-        // Add required entity
-        employee.setEmployer(employer);
         return employee;
     }
 
@@ -95,8 +93,6 @@ class EmployeeResourceIT {
         } else {
             employer = TestUtil.findAll(em, Employer.class).get(0);
         }
-        employee.setEmployer(employer);
-        // Add required entity
         employee.setEmployer(employer);
         return employee;
     }
