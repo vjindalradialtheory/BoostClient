@@ -1,11 +1,11 @@
-id;name;date_of_birth
-1;calculate networks;2021-05-23
-2;repurpose withdrawal;2021-05-24
-3;Dale Granite leading-edge;2021-05-23
-4;California silver;2021-05-24
-5;maximized;2021-05-24
-6;Underpass;2021-05-23
-7;Account Garden;2021-05-23
-8;reinvent orchestrate;2021-05-23
-9;connecting National;2021-05-24
-10;Singapore;2021-05-23
+id;name;date_of_birth;employer_id;employer_id
+1;calculate networks;2021-05-23;1;1
+2;repurpose withdrawal;2021-05-24;2;2
+3;Dale Granite leading-edge;2021-05-23;3;3
+4;California silver;2021-05-24;4;4
+5;maximized;2021-05-24;5;5
+6;Underpass;2021-05-23;6;6
+7;Account Garden;2021-05-23;7;7
+8;reinvent orchestrate;2021-05-23;8;8
+9;connecting National;2021-05-24;9;9
+10;Singapore;2021-05-23;10;10

@@ -26,8 +26,12 @@ entity Quote {
   quoteDate LocalDate required
 }
 
+relationship OneToMany {
+   Employer{employee} to Employee{employer(name) required}
+}
+
 relationship ManyToOne {
-	Employee to Employer
+	Employee{employer(name) required} to Employer
 }
 
 relationship ManyToOne {

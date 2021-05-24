@@ -29,7 +29,7 @@ public class Employer implements Serializable {
 
     @OneToMany(mappedBy = "employer")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "employer" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "employer", "employer" }, allowSetters = true)
     private Set<Employee> employees = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
