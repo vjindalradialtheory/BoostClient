@@ -30,7 +30,13 @@ public class Employee implements Serializable {
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties(value = { "employees" }, allowSetters = true)
+    private Employer employer;
+
+    @ManyToOne(optional = false)
+    @NotNull
     @JsonIgnoreProperties(value = { "employees" }, allowSetters = true)
     private Employer employer;
 
@@ -72,6 +78,19 @@ public class Employee implements Serializable {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Employer getEmployer() {
+        return this.employer;
+    }
+
+    public Employee employer(Employer employer) {
+        this.setEmployer(employer);
+        return this;
+    }
+
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
     }
 
     public Employer getEmployer() {

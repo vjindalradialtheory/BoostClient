@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.boostclient.IntegrationTest;
 import com.boostclient.domain.Employee;
+import com.boostclient.domain.Employer;
 import com.boostclient.repository.EmployeeRepository;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -62,6 +63,18 @@ class EmployeeResourceIT {
      */
     public static Employee createEntity(EntityManager em) {
         Employee employee = new Employee().name(DEFAULT_NAME).dateOfBirth(DEFAULT_DATE_OF_BIRTH);
+        // Add required entity
+        Employer employer;
+        if (TestUtil.findAll(em, Employer.class).isEmpty()) {
+            employer = EmployerResourceIT.createEntity(em);
+            em.persist(employer);
+            em.flush();
+        } else {
+            employer = TestUtil.findAll(em, Employer.class).get(0);
+        }
+        employee.setEmployer(employer);
+        // Add required entity
+        employee.setEmployer(employer);
         return employee;
     }
 
@@ -73,6 +86,18 @@ class EmployeeResourceIT {
      */
     public static Employee createUpdatedEntity(EntityManager em) {
         Employee employee = new Employee().name(UPDATED_NAME).dateOfBirth(UPDATED_DATE_OF_BIRTH);
+        // Add required entity
+        Employer employer;
+        if (TestUtil.findAll(em, Employer.class).isEmpty()) {
+            employer = EmployerResourceIT.createUpdatedEntity(em);
+            em.persist(employer);
+            em.flush();
+        } else {
+            employer = TestUtil.findAll(em, Employer.class).get(0);
+        }
+        employee.setEmployer(employer);
+        // Add required entity
+        employee.setEmployer(employer);
         return employee;
     }
 
