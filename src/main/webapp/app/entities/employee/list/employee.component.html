@@ -36,7 +36,6 @@
           <th scope="col"><span jhiTranslate="boostclientApp.employee.name">Name</span></th>
           <th scope="col"><span jhiTranslate="boostclientApp.employee.dateOfBirth">Date Of Birth</span></th>
           <th scope="col"><span jhiTranslate="boostclientApp.employee.employer">Employer</span></th>
-          <th scope="col"><span jhiTranslate="boostclientApp.employee.employer">Employer</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -47,11 +46,6 @@
           </td>
           <td>{{ employee.name }}</td>
           <td>{{ employee.dateOfBirth | formatMediumDate }}</td>
-          <td>
-            <div *ngIf="employee.employer">
-              <a [routerLink]="['/employer', employee.employer?.id, 'view']">{{ employee.employer?.name }}</a>
-            </div>
-          </td>
           <td>
             <div *ngIf="employee.employer">
               <a [routerLink]="['/employer', employee.employer?.id, 'view']">{{ employee.employer?.name }}</a>

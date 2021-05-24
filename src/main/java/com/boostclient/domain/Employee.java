@@ -35,11 +35,6 @@ public class Employee implements Serializable {
     @JsonIgnoreProperties(value = { "employees" }, allowSetters = true)
     private Employer employer;
 
-    @ManyToOne(optional = false)
-    @NotNull
-    @JsonIgnoreProperties(value = { "employees" }, allowSetters = true)
-    private Employer employer;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -78,19 +73,6 @@ public class Employee implements Serializable {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public Employer getEmployer() {
-        return this.employer;
-    }
-
-    public Employee employer(Employer employer) {
-        this.setEmployer(employer);
-        return this;
-    }
-
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
     }
 
     public Employer getEmployer() {

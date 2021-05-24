@@ -24,7 +24,6 @@ export class EmployeeUpdateComponent implements OnInit {
     name: [null, [Validators.required]],
     dateOfBirth: [null, [Validators.required]],
     employer: [null, Validators.required],
-    employer: [null, Validators.required],
   });
 
   constructor(
@@ -85,12 +84,10 @@ export class EmployeeUpdateComponent implements OnInit {
       name: employee.name,
       dateOfBirth: employee.dateOfBirth,
       employer: employee.employer,
-      employer: employee.employer,
     });
 
     this.employersSharedCollection = this.employerService.addEmployerToCollectionIfMissing(
       this.employersSharedCollection,
-      employee.employer,
       employee.employer
     );
   }
@@ -101,11 +98,7 @@ export class EmployeeUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<IEmployer[]>) => res.body ?? []))
       .pipe(
         map((employers: IEmployer[]) =>
-          this.employerService.addEmployerToCollectionIfMissing(
-            employers,
-            this.editForm.get('employer')!.value,
-            this.editForm.get('employer')!.value
-          )
+          this.employerService.addEmployerToCollectionIfMissing(employers, this.editForm.get('employer')!.value)
         )
       )
       .subscribe((employers: IEmployer[]) => (this.employersSharedCollection = employers));
@@ -117,7 +110,6 @@ export class EmployeeUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
       dateOfBirth: this.editForm.get(['dateOfBirth'])!.value,
-      employer: this.editForm.get(['employer'])!.value,
       employer: this.editForm.get(['employer'])!.value,
     };
   }

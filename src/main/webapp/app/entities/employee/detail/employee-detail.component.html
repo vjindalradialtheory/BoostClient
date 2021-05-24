@@ -28,12 +28,6 @@
             <a [routerLink]="['/employer', employee.employer?.id, 'view']">{{ employee.employer?.name }}</a>
           </div>
         </dd>
-        <dt><span jhiTranslate="boostclientApp.employee.employer">Employer</span></dt>
-        <dd>
-          <div *ngIf="employee.employer">
-            <a [routerLink]="['/employer', employee.employer?.id, 'view']">{{ employee.employer?.name }}</a>
-          </div>
-        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
