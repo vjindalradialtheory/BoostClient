@@ -31,9 +31,5 @@ relationship OneToMany {
 }
 
 relationship ManyToOne {
-	Employee{employer(name) required} to Employer
-}
-
-relationship ManyToOne {
 	Quote{employer(name) required} to Employer
 }   
