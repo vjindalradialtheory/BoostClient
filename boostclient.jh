@@ -29,6 +29,11 @@ entity Quote {
 relationship ManyToOne {
 	Employee{employer(name) required} to Employer
 }
+
+relationship OneToMany {
+   Employer{name} to Employee{employer(name) required}
+}
+
 relationship ManyToOne {
 	Quote{employer(name) required} to Employer
 }   
