@@ -56,23 +56,14 @@
         <div class="form-group">
           <label class="form-control-label" jhiTranslate="boostclientApp.employee.employer" for="field_employer">Employer</label>
           <select class="form-control" id="field_employer" data-cy="employer" name="employer" formControlName="employer">
-            <option *ngIf="!editForm.get('employer')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="null"></option>
             <option
               [ngValue]="employerOption.id === editForm.get('employer')!.value?.id ? editForm.get('employer')!.value : employerOption"
               *ngFor="let employerOption of employersSharedCollection; trackBy: trackEmployerById"
             >
-              {{ employerOption.name }}
+              {{ employerOption.id }}
             </option>
           </select>
-        </div>
-        <div *ngIf="editForm.get(['employer'])!.invalid && (editForm.get(['employer'])!.dirty || editForm.get(['employer'])!.touched)">
-          <small
-            class="form-text text-danger"
-            *ngIf="editForm.get(['employer'])?.errors?.required"
-            jhiTranslate="entity.validation.required"
-          >
-            This field is required.
-          </small>
         </div>
       </div>
 

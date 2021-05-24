@@ -23,7 +23,7 @@ export class EmployeeUpdateComponent implements OnInit {
     id: [],
     name: [null, [Validators.required]],
     dateOfBirth: [null, [Validators.required]],
-    employer: [null, Validators.required],
+    employer: [],
   });
 
   constructor(
