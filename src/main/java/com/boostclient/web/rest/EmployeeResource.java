@@ -129,6 +129,9 @@ public class EmployeeResource {
                     if (employee.getName() != null) {
                         existingEmployee.setName(employee.getName());
                     }
+                    if (employee.getSsno() != null) {
+                        existingEmployee.setSsno(employee.getSsno());
+                    }
                     if (employee.getDateOfBirth() != null) {
                         existingEmployee.setDateOfBirth(employee.getDateOfBirth());
                     }

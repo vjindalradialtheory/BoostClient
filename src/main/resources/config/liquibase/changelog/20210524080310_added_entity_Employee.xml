@@ -17,6 +17,9 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
+            <column name="ssno" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
             <column name="date_of_birth" type="date">
                 <constraints nullable="false" />
             </column>
@@ -44,6 +47,7 @@
                   tableName="employee">
             <column name="id" type="numeric"/>
             <column name="name" type="string"/>
+            <column name="ssno" type="string"/>
             <column name="date_of_birth" type="date"/>
             <column name="employer_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->

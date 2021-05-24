@@ -18,6 +18,7 @@ entity Employer {
 
 entity Employee {
   name String required
+  ssno String required
   dateOfBirth LocalDate required
 }
 

@@ -27,6 +27,7 @@ describe('Service Tests', () => {
       elemDefault = {
         id: 0,
         name: 'AAAAAAA',
+        ssno: 'AAAAAAA',
         dateOfBirth: currentDate,
       };
     });
@@ -75,6 +76,7 @@ describe('Service Tests', () => {
           {
             id: 1,
             name: 'BBBBBB',
+            ssno: 'BBBBBB',
             dateOfBirth: currentDate.format(DATE_FORMAT),
           },
           elemDefault
@@ -98,6 +100,7 @@ describe('Service Tests', () => {
         const patchObject = Object.assign(
           {
             name: 'BBBBBB',
+            ssno: 'BBBBBB',
             dateOfBirth: currentDate.format(DATE_FORMAT),
           },
           new Employee()
@@ -124,6 +127,7 @@ describe('Service Tests', () => {
           {
             id: 1,
             name: 'BBBBBB',
+            ssno: 'BBBBBB',
             dateOfBirth: currentDate.format(DATE_FORMAT),
           },
           elemDefault
@@ -181,7 +185,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Employee to an array', () => {
-          const employeeArray: IEmployee[] = [{ id: 123 }, { id: 456 }, { id: 65397 }];
+          const employeeArray: IEmployee[] = [{ id: 123 }, { id: 456 }, { id: 62230 }];
           const employeeCollection: IEmployee[] = [{ id: 123 }];
           expectedResult = service.addEmployeeToCollectionIfMissing(employeeCollection, ...employeeArray);
           expect(expectedResult).toHaveLength(3);
