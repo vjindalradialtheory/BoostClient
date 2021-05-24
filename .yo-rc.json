@@ -5,7 +5,7 @@
     "baseName": "boostclient",
     "packageName": "com.boostclient",
     "packageFolder": "com/boostclient",
-    "serverPort": 8080,
+    "serverPort": "8080",
     "serviceDiscoveryType": false,
     "authenticationType": "jwt",
     "cacheProvider": "ehcache",
@@ -13,7 +13,7 @@
     "websocket": false,
     "databaseType": "sql",
     "devDatabaseType": "h2Disk",
-    "prodDatabaseType": "postgresql",
+    "prodDatabaseType": "mysql",
     "searchEngine": false,
     "enableSwaggerCodegen": false,
     "messageBroker": false,
@@ -42,7 +42,9 @@
     "jwtSecretKey": "NTk1YTkxOTVjZjBkZTk2ZjFlZjk2ZWVhZjJmZWQ0ZjE3NjIzZjBlZjViNzE3Zjk5MzQ1OGQ4NTZlNDVlNzQ3MTY4ZjZhYmE4ZTU3MjIxYTFiYzJmODFkN2MwNjFkMzEzZDZhOGI0NzNmMDg1NWI3YWM5YTgyNmEwMWY5NjZiNTQ=",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Employer", "Employee", "Quote"],
+    "lastLiquibaseTimestamp": 1621843391000
   },
   "git-provider": "GitHub",
   "git-company": "vjindalradialtheory",

@@ -27,8 +27,8 @@
     "webapp:dev-verbose": "ng serve --verbose",
     "webapp:prod": "npm run clean-www && npm run webapp:build:prod",
     "webapp:test": "npm run test",
-    "docker:db:up": "docker-compose -f src/main/docker/postgresql.yml up -d",
-    "docker:db:down": "docker-compose -f src/main/docker/postgresql.yml down -v --remove-orphans",
+    "docker:db:up": "docker-compose -f src/main/docker/mysql.yml up -d",
+    "docker:db:down": "docker-compose -f src/main/docker/mysql.yml down -v --remove-orphans",
     "docker:others:await": "",
     "predocker:others:up": "",
     "docker:others:up": "",
@@ -60,7 +60,7 @@
     "ci:frontend:test": "npm run ci:frontend:build && npm test"
   },
   "config": {
-    "backend_port": 8080,
+    "backend_port": "8080",
     "default_environment": "prod",
     "packaging": "jar"
   },
