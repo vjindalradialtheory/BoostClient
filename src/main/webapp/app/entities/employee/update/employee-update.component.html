@@ -24,6 +24,16 @@
         </div>
 
         <div class="form-group">
+          <label class="form-control-label" jhiTranslate="boostclientApp.employee.ssno" for="field_ssno">Ssno</label>
+          <input type="text" class="form-control" name="ssno" id="field_ssno" data-cy="ssno" formControlName="ssno" />
+          <div *ngIf="editForm.get('ssno')!.invalid && (editForm.get('ssno')!.dirty || editForm.get('ssno')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ssno')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
           <label class="form-control-label" jhiTranslate="boostclientApp.employee.dateOfBirth" for="field_dateOfBirth">Date Of Birth</label>
           <div class="input-group">
             <input

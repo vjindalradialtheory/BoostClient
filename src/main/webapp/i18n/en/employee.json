@@ -19,6 +19,7 @@
       },
       "id": "ID",
       "name": "Name",
+      "ssno": "Ssno",
       "dateOfBirth": "Date Of Birth",
       "employer": "Employer"
     }

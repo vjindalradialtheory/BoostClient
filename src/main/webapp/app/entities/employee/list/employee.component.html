@@ -34,6 +34,7 @@
         <tr>
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
           <th scope="col"><span jhiTranslate="boostclientApp.employee.name">Name</span></th>
+          <th scope="col"><span jhiTranslate="boostclientApp.employee.ssno">Ssno</span></th>
           <th scope="col"><span jhiTranslate="boostclientApp.employee.dateOfBirth">Date Of Birth</span></th>
           <th scope="col"><span jhiTranslate="boostclientApp.employee.employer">Employer</span></th>
           <th scope="col"></th>
@@ -45,6 +46,7 @@
             <a [routerLink]="['/employee', employee.id, 'view']">{{ employee.id }}</a>
           </td>
           <td>{{ employee.name }}</td>
+          <td>{{ employee.ssno }}</td>
           <td>{{ employee.dateOfBirth | formatMediumDate }}</td>
           <td>
             <div *ngIf="employee.employer">

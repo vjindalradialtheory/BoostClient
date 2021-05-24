@@ -22,6 +22,7 @@ export class EmployeeUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     name: [null, [Validators.required]],
+    ssno: [null, [Validators.required]],
     dateOfBirth: [null, [Validators.required]],
     employer: [null, Validators.required],
   });
@@ -82,6 +83,7 @@ export class EmployeeUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: employee.id,
       name: employee.name,
+      ssno: employee.ssno,
       dateOfBirth: employee.dateOfBirth,
       employer: employee.employer,
     });
@@ -109,6 +111,7 @@ export class EmployeeUpdateComponent implements OnInit {
       ...new Employee(),
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
+      ssno: this.editForm.get(['ssno'])!.value,
       dateOfBirth: this.editForm.get(['dateOfBirth'])!.value,
       employer: this.editForm.get(['employer'])!.value,
     };

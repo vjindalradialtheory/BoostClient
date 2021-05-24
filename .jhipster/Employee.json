@@ -7,6 +7,11 @@
       "fieldValidateRules": ["required"]
     },
     {
+      "fieldName": "ssno",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
       "fieldName": "dateOfBirth",
       "fieldType": "LocalDate",
       "fieldValidateRules": ["required"]

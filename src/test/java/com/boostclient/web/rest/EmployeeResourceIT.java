@@ -35,6 +35,9 @@ class EmployeeResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_SSNO = "AAAAAAAAAA";
+    private static final String UPDATED_SSNO = "BBBBBBBBBB";
+
     private static final LocalDate DEFAULT_DATE_OF_BIRTH = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_OF_BIRTH = LocalDate.now(ZoneId.systemDefault());
 
@@ -62,7 +65,7 @@ class EmployeeResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Employee createEntity(EntityManager em) {
-        Employee employee = new Employee().name(DEFAULT_NAME).dateOfBirth(DEFAULT_DATE_OF_BIRTH);
+        Employee employee = new Employee().name(DEFAULT_NAME).ssno(DEFAULT_SSNO).dateOfBirth(DEFAULT_DATE_OF_BIRTH);
         // Add required entity
         Employer employer;
         if (TestUtil.findAll(em, Employer.class).isEmpty()) {
@@ -83,7 +86,7 @@ class EmployeeResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Employee createUpdatedEntity(EntityManager em) {
-        Employee employee = new Employee().name(UPDATED_NAME).dateOfBirth(UPDATED_DATE_OF_BIRTH);
+        Employee employee = new Employee().name(UPDATED_NAME).ssno(UPDATED_SSNO).dateOfBirth(UPDATED_DATE_OF_BIRTH);
         // Add required entity
         Employer employer;
         if (TestUtil.findAll(em, Employer.class).isEmpty()) {
@@ -116,6 +119,7 @@ class EmployeeResourceIT {
         assertThat(employeeList).hasSize(databaseSizeBeforeCreate + 1);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
         assertThat(testEmployee.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testEmployee.getSsno()).isEqualTo(DEFAULT_SSNO);
         assertThat(testEmployee.getDateOfBirth()).isEqualTo(DEFAULT_DATE_OF_BIRTH);
     }
 
@@ -143,6 +147,23 @@ class EmployeeResourceIT {
         int databaseSizeBeforeTest = employeeRepository.findAll().size();
         // set the field null
         employee.setName(null);
+
+        // Create the Employee, which fails.
+
+        restEmployeeMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(employee)))
+            .andExpect(status().isBadRequest());
+
+        List<Employee> employeeList = employeeRepository.findAll();
+        assertThat(employeeList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkSsnoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = employeeRepository.findAll().size();
+        // set the field null
+        employee.setSsno(null);
 
         // Create the Employee, which fails.
 
@@ -184,6 +205,7 @@ class EmployeeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(employee.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].ssno").value(hasItem(DEFAULT_SSNO)))
             .andExpect(jsonPath("$.[*].dateOfBirth").value(hasItem(DEFAULT_DATE_OF_BIRTH.toString())));
     }
 
@@ -200,6 +222,7 @@ class EmployeeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(employee.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
+            .andExpect(jsonPath("$.ssno").value(DEFAULT_SSNO))
             .andExpect(jsonPath("$.dateOfBirth").value(DEFAULT_DATE_OF_BIRTH.toString()));
     }
 
@@ -222,7 +245,7 @@ class EmployeeResourceIT {
         Employee updatedEmployee = employeeRepository.findById(employee.getId()).get();
         // Disconnect from session so that the updates on updatedEmployee are not directly saved in db
         em.detach(updatedEmployee);
-        updatedEmployee.name(UPDATED_NAME).dateOfBirth(UPDATED_DATE_OF_BIRTH);
+        updatedEmployee.name(UPDATED_NAME).ssno(UPDATED_SSNO).dateOfBirth(UPDATED_DATE_OF_BIRTH);
 
         restEmployeeMockMvc
             .perform(
@@ -237,6 +260,7 @@ class EmployeeResourceIT {
         assertThat(employeeList).hasSize(databaseSizeBeforeUpdate);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
         assertThat(testEmployee.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testEmployee.getSsno()).isEqualTo(UPDATED_SSNO);
         assertThat(testEmployee.getDateOfBirth()).isEqualTo(UPDATED_DATE_OF_BIRTH);
     }
 
@@ -308,7 +332,7 @@ class EmployeeResourceIT {
         Employee partialUpdatedEmployee = new Employee();
         partialUpdatedEmployee.setId(employee.getId());
 
-        partialUpdatedEmployee.name(UPDATED_NAME).dateOfBirth(UPDATED_DATE_OF_BIRTH);
+        partialUpdatedEmployee.name(UPDATED_NAME).ssno(UPDATED_SSNO).dateOfBirth(UPDATED_DATE_OF_BIRTH);
 
         restEmployeeMockMvc
             .perform(
@@ -323,6 +347,7 @@ class EmployeeResourceIT {
         assertThat(employeeList).hasSize(databaseSizeBeforeUpdate);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
         assertThat(testEmployee.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testEmployee.getSsno()).isEqualTo(UPDATED_SSNO);
         assertThat(testEmployee.getDateOfBirth()).isEqualTo(UPDATED_DATE_OF_BIRTH);
     }
 
@@ -338,7 +363,7 @@ class EmployeeResourceIT {
         Employee partialUpdatedEmployee = new Employee();
         partialUpdatedEmployee.setId(employee.getId());
 
-        partialUpdatedEmployee.name(UPDATED_NAME).dateOfBirth(UPDATED_DATE_OF_BIRTH);
+        partialUpdatedEmployee.name(UPDATED_NAME).ssno(UPDATED_SSNO).dateOfBirth(UPDATED_DATE_OF_BIRTH);
 
         restEmployeeMockMvc
             .perform(
@@ -353,6 +378,7 @@ class EmployeeResourceIT {
         assertThat(employeeList).hasSize(databaseSizeBeforeUpdate);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
         assertThat(testEmployee.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testEmployee.getSsno()).isEqualTo(UPDATED_SSNO);
         assertThat(testEmployee.getDateOfBirth()).isEqualTo(UPDATED_DATE_OF_BIRTH);
     }
 

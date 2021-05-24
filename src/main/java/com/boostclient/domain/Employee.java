@@ -27,6 +27,10 @@ public class Employee implements Serializable {
     private String name;
 
     @NotNull
+    @Column(name = "ssno", nullable = false)
+    private String ssno;
+
+    @NotNull
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
 
@@ -60,6 +64,19 @@ public class Employee implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSsno() {
+        return this.ssno;
+    }
+
+    public Employee ssno(String ssno) {
+        this.ssno = ssno;
+        return this;
+    }
+
+    public void setSsno(String ssno) {
+        this.ssno = ssno;
     }
 
     public LocalDate getDateOfBirth() {
@@ -113,6 +130,7 @@ public class Employee implements Serializable {
         return "Employee{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", ssno='" + getSsno() + "'" +
             ", dateOfBirth='" + getDateOfBirth() + "'" +
             "}";
     }
